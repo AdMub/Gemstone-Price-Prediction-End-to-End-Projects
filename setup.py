@@ -15,10 +15,10 @@ def get_requirements(file_path:str)->List[str]:
     return requirements"""
 
 setup(
-    name='DimondPricePrediction',
+    name='DiamondPricePrediction',
     version='0.0.1',
-    author='sunny savita',
-    author_email='sunny.savita@ineuron.ai',
-    install_requires=["scikit-learn","pandas","numpy"],
+    author='AdMub',
+    author_email='admub465@gmil.com',
+    install_requires=["scikit-learn","pandas","numpy","mlflow"],
     packages=find_packages()
 )

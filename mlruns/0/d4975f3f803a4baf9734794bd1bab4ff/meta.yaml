@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/USER/Documents/Gemstone-Price-Prediction-End-to-End-Projects/mlruns/0/d4975f3f803a4baf9734794bd1bab4ff/artifacts
+end_time: 1755610282189
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d4975f3f803a4baf9734794bd1bab4ff
+run_name: calm-doe-94
+run_uuid: d4975f3f803a4baf9734794bd1bab4ff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755610259998
+status: 3
+tags: []
+user_id: USER

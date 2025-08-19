@@ -4,7 +4,7 @@ numpy
 seaborn
 matplotlib
 flask
-mlflow==2.2.2
+mlflow==2.22.0
 dvc
 ipykernel
 xgboost
@@ -17,7 +17,7 @@ black==22.8.0
 flake8==5.0.4
 mypy==0.971
 
-# -e .   # Installing local packages
+-e .   # Installing local packages
 
 # Commands
 # pip install -r requirements_dev.txt
