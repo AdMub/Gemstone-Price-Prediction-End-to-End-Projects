@@ -1,0 +1,58 @@
+"""
+app.py
+
+This is the main Flask application that handles:
+- Displaying the homepage (index)
+- Showing the prediction form
+- Handling form submissions
+- Displaying prediction results
+"""
+
+from flask import Flask, request, render_template
+
+from src.pipeline.prediction_pipeline import PredictPipeline, CustomData
+
+app = Flask(__name__)
+
+# -------------------------------
+# Route 1: Homepage
+# -------------------------------
+
+@app.route('/')
+def home_page():
+    # This renders the homepage template (index.html)
+    return render_template("index.html")
+
+
+@app.route("/predict", methods=["GET", "POST"])
+def predict_datapoint():
+    if request.method == "GET":
+        return render_template("form.html")
+    else:
+        # Collect data from form
+        data = CustomData(
+            carat=float(request.form.get("carat")),
+            depth=float(request.form.get("depth")),
+            table=float(request.form.get("table")),
+            x=float(request.form.get("x")),
+            y=float(request.form.get("y")),
+            z=float(request.form.get("z")),
+            cut=request.form.get("cut"),
+            color=request.form.get("color"),
+            clarity=request.form.get("clarity")
+        )
+
+        # Convert to dataframe
+        final_data = data.get_data_as_dataframe()
+
+        # Prediction pipeline
+        predict_pipeline = PredictPipeline()
+        pred = predict_pipeline.predict(final_data)
+
+        result = round(pred[0], 3)
+
+        return render_template("result.html", final_result=result)
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)

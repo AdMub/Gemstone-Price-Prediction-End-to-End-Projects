@@ -1,0 +1,382 @@
+/* ===========================
+   🎨 Global Base Layout
+   =========================== */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Color variables for easy theme adjustments */
+  --bg-light: #f0f4f8;        /* Light morning background */
+  --bg-light-end: #e0e7ff;
+  --bg-dark: #0b1a3d;         /* Dark night background */
+  --bg-dark-end: #041028;
+
+  --card-light: #ffffff;      /* Card background light mode */
+  --card-dark: #111827;       /* Card background dark mode */
+
+  --text-light: #0f172a;      /* Text in light mode */
+  --text-dark: #e5e7eb;       /* Text in dark mode */
+  --muted-light: #64748b;     /* Muted text in light mode */
+  --muted-dark: #9ca3af;      /* Muted text in dark mode */
+
+  --primary: #2563eb;         /* Primary button */
+  --primary-2: #1d4ed8;       /* Primary hover */
+  --secondary: #374151;       /* Secondary button */
+  --secondary-2: #1f2937;     /* Secondary hover */
+  --ring: #3b82f6;            /* Focus outline */
+  
+  --input-bg-light: #ffffff;  /* Input background light */
+  --input-bg-dark: #1f2937;   /* Input background dark */
+  --border-light: #cbd5e1;    /* Border light */
+  --border-dark: #374151;     /* Border dark */
+}
+
+/* ===========================
+   🌞 Body / Themes
+   =========================== */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+               "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+               "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.5;
+  min-height: 100vh;
+
+  /* Default Light Mode */
+  background: linear-gradient(180deg, var(--bg-light), var(--bg-light-end));
+  color: var(--text-light);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode (Night) */
+body.dark-mode {
+  background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-end));
+  color: var(--text-dark);
+}
+
+/* ===========================
+   📝 Header
+   =========================== */
+header {
+  position: relative; /* required for theme toggle positioning */
+  padding: 24px 16px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+header h2 {
+  color: var(--muted-light);
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+body.dark-mode header h2 {
+  color: var(--muted-dark);
+}
+
+/* ===========================
+   🌗 Theme Toggle Switch
+   =========================== */
+.theme-toggle-container {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.theme-toggle input {
+  display: none; /* hide checkbox */
+}
+
+/* Slider track */
+.toggle-slider {
+  width: 50px;
+  height: 25px;
+  background-color: var(--bg-light);
+  border-radius: 25px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Knob inside the slider */
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  background-color: var(--text-light);
+  border-radius: 50%;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Checked state = Dark Mode */
+.theme-toggle input:checked + .toggle-slider {
+  background-color: #1e3a8a; /* dark blue track */
+}
+
+.theme-toggle input:checked + .toggle-slider::before {
+  transform: translateX(25px);
+  background-color: var(--bg-light); /* knob turns light */
+}
+
+/* ===========================
+   🏠 Homepage / Center Layout
+   =========================== */
+.center {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+}
+
+main.center a.btn {
+  font-size: 1.2rem;
+  padding: 14px 24px;
+  margin-top: 20px;
+}
+
+/* ===========================
+   🔘 Buttons
+   =========================== */
+.btn {
+  display: inline-block;
+  padding: 12px 16px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+  transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:hover { 
+  background: var(--primary-2); 
+  transform: translateY(-1px); 
+}
+
+.btn:focus { 
+  outline: 3px solid var(--ring); 
+  outline-offset: 2px; 
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn.btn-secondary {
+  background: var(--secondary);
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.35);
+}
+
+.btn.btn-secondary:hover { background: var(--secondary-2); }
+
+/* ===========================
+   📦 Card (Result Page)
+   =========================== */
+.card {
+  background: var(--card-light);
+  padding: 24px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .card {
+  background: var(--card-dark);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .card:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  color: var(--muted-light);
+}
+
+body.dark-mode .card h2 {
+  color: var(--muted-dark);
+}
+
+/* Animated result value */
+.result-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin: 12px 0 20px;
+  color: #22c55e; /* green for affordable */
+  animation: pop 0.5s ease;
+}
+
+.result-value.expensive {
+  color: gold; /* gold for expensive */
+  text-shadow: 0 0 10px rgba(255,215,0,0.8);
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Buttons under card */
+.links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   🧾 Form Layout
+   =========================== */
+.grid-form {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  gap: 12px;
+  background: var(--card-light);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .grid-form {
+  background: var(--card-dark);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+}
+
+.grid-form label {
+  font-weight: 600;
+  color: var(--muted-light);
+}
+
+body.dark-mode .grid-form label {
+  color: var(--muted-dark);
+}
+
+.grid-form input,
+.grid-form select,
+.grid-form button {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  background: var(--input-bg-light);
+  color: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .grid-form input,
+body.dark-mode .grid-form select,
+body.dark-mode .grid-form button {
+  border: 1px solid var(--border-dark);
+  background: var(--input-bg-dark);
+}
+
+/* Focus styles */
+.grid-form input:focus,
+.grid-form select:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+}
+
+/* Submit button inside form */
+.grid-form .btn { 
+  margin-top: 8px; 
+  border: none;
+}
+
+/* Loading animation */
+.grid-form .btn.loading {
+  background: var(--secondary);
+  position: relative;
+  pointer-events: none;
+}
+.grid-form .btn.loading::after {
+  content: "⏳";
+  margin-left: 8px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Grid layout on wider screens */
+@media (min-width: 640px) {
+  .grid-form {
+    grid-template-columns: 180px 1fr;
+    align-items: center;
+  }
+  .grid-form .btn {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 260px;
+  }
+}
+
+/* ===========================
+   📌 Footer
+   =========================== */
+footer {
+  margin: 20px;
+  text-align: left;
+}
+
+footer .link-back {
+  color: var(--muted-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode footer .link-back {
+  color: var(--muted-dark);
+}
+
+footer .link-back:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Smooth transitions for theme */
+body, .card, .grid-form, .grid-form input, .grid-form select, .grid-form button,
+header h2, .grid-form label, footer .link-back {
+  transition: 
+    background 0.5s ease,
+    color 0.5s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+

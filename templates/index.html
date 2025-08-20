@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gemstone & Diamond Price Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+</head>
+<body>
+   <header>
+    <h1>Welcome to the Gemstone Price Predictor 💎</h1>
+    <h2>Unlock the hidden value of gemstones using advanced machine learning models.</h2>
+
+    <div class="theme-toggle-container">
+        <label class="theme-toggle">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="toggle-slider"></span>
+        </label>
+    </div>
+  </header>
+
+
+    
+    
+  
+
+  
+
+  <main class="center">
+    <a href="{{ url_for('predict_datapoint') }}" class="btn">Go to Prediction Form</a>
+  </main>
+</body>
+</html>
