@@ -1,0 +1,35 @@
+FROM python:3.12-slim
+USER root
+
+RUN mkdir /app
+COPY . /app/
+WORKDIR /app/
+
+# Install dependencies
+RUN pip3 install -r requirements_dev.txt
+
+# Airflow environment variables
+ENV AIRFLOW_HOME="/app/airflow"
+ENV AIRFLOW_CORE_DAGBAG_IMPORT_TIMEOUT=1000
+ENV AIRFLOW_CORE_ENABLE_XCOM_PICKLING=True
+
+# Initialize Airflow DB
+RUN airflow db init
+
+# Create default admin user
+RUN airflow users create \
+    -u admin \
+    -p admin \
+    -r Admin \
+    -f Mubarak \
+    -l Adisa \
+    -e admub.admub465@gmail.com
+
+# Copy and allow execution of start.sh
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
+RUN apt update -y
+
+ENTRYPOINT [ "/bin/sh" ]
+CMD [ "start.sh" ]
