@@ -6,3 +6,13 @@ services:
     container_name: gemstone-prediction
     ports:
       - "8080:8080"
+  
+  flaskapp:
+    build:
+      context: ./
+      dockerfile: Dockerfile.flask
+    image: flaskimage
+    container_name: gemstone-prediction-flask
+    ports:
+      - "80:80"
+    

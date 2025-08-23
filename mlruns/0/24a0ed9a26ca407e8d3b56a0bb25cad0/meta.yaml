@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/USER/Documents/Gemstone-Price-Prediction-End-to-End-Projects/mlruns/0/24a0ed9a26ca407e8d3b56a0bb25cad0/artifacts
+end_time: 1755901296944
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 24a0ed9a26ca407e8d3b56a0bb25cad0
+run_name: capable-swan-267
+run_uuid: 24a0ed9a26ca407e8d3b56a0bb25cad0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755901277587
+status: 3
+tags: []
+user_id: USER
