@@ -1,0 +1,28 @@
+1. Configure the cloud repository, inside the dag/training pipeline, it will save in the artifacts
+2. write down the code dag/batch_prediction
+
+Steps for batch
+input file from cloud repo
+download the file
+prediction
+upload the prediction
+
+
+Azure Process
+Search --> Azure Container registry(for storing images)  & Web app for the container(for running the images)
+Push existing image
+
+
+docker build -t url/imagename/tag
+docker login url
+username & password
+login succeed
+docker push url/imagename
+
+
+- How to push existing image in our docker container
+- How to select docker compose in <Web app for container service> and figure how to launch multiple container
+- Terraform
+- Monitoring tools: granfana, evidentily ai/ cloud native
+- Tracking (mlflow for production)
+

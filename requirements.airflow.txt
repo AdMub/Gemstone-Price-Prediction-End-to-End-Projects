@@ -1,0 +1,2 @@
+dvc
+# Airflow is installed directly in Dockerfile with constraints

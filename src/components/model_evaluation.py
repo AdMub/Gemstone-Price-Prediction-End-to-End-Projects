@@ -50,7 +50,7 @@ class ModelEvaluation:
         logging.info("evaluation metrics captured")
         return rmse, mae, r2
 
-    def initiate_model_evaluation(self, train_array, test_array):
+    def initiate_model_evaluation(self, train_array, test_array, model_path):
         """
         Run model evaluation and log metrics with MLflow.
         
@@ -91,7 +91,12 @@ class ModelEvaluation:
                     mlflow.sklearn.log_model(model, "model", registered_model_name="ml_model")
                 else:
                     mlflow.sklearn.log_model(model, "model")
-
+                
+                    return {
+                            "rmse": rmse,
+                            "mae": mae,
+                            "r2": r2
+                        }
         except Exception as e:
             raise customexception(e, sys)
         

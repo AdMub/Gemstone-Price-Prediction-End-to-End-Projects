@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/USER/Documents/Gemstone-Price-Prediction-End-to-End-Projects/mlruns/0/a2020c6b075e43f09e182d95e5e152d2/artifacts
+end_time: 1755985307547
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a2020c6b075e43f09e182d95e5e152d2
+run_name: dazzling-panda-200
+run_uuid: a2020c6b075e43f09e182d95e5e152d2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755985285270
+status: 3
+tags: []
+user_id: USER
